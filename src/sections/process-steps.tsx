@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 
 type Step = {
   number: string;
@@ -10,7 +11,13 @@ type Step = {
 
 function StepCard({ step }: { step: Step }) {
   return (
-    <div className="rounded-xl bg-foreground/10 p-4 md:p-6 flex gap-4 items-start">
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="rounded-xl bg-foreground/10 p-4 md:p-6 flex gap-4 items-start"
+    >
       <div className="shrink-0 rounded-xl bg-gradient-to-br from-[#0C4A6E] to-[#0B2A4A] text-white w-20 h-20 md:w-24 md:h-24 flex items-center justify-center text-4xl md:text-5xl font-extrabold shadow-inner">
         {step.number}
       </div>
@@ -28,7 +35,7 @@ function StepCard({ step }: { step: Step }) {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

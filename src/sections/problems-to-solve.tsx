@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 export default function ProblemsToSolve() {
   const problems = [
     {
@@ -20,7 +22,13 @@ export default function ProblemsToSolve() {
 
   return (
     <section className="w-full text-foreground py-16">
-      <div className="mx-auto max-w-3xl px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mx-auto max-w-3xl px-6"
+      >
         <div className="relative rounded-xl border border-foreground/40 p-6 md:p-8">
           {/* Borde interior con color primario como en la muestra */}
           <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-primary/60" />
@@ -47,7 +55,7 @@ export default function ProblemsToSolve() {
             </ul>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
