@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "motion/react"
 
-export default function Hero() {
+export default function Hero({ onContact }: { onContact: () => void }) {
   return (
     <section className="min-h-screen flex items-center bg-background text-foreground">
       <motion.div
@@ -23,7 +23,7 @@ export default function Hero() {
           nuestro equipo, rellenando el formulario y recibe tu
           <span className="font-semibold text-primary"> plan de acción personalizado</span>.
         </p>
-        <Button size="lg" className="mt-6">
+        <Button size="lg" className="mt-6" onClick={onContact}>
           Contáctanos
           <ArrowRight />
         </Button>

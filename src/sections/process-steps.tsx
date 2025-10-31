@@ -9,7 +9,7 @@ type Step = {
   cta?: string;
 };
 
-function StepCard({ step }: { step: Step }) {
+function StepCard({ step, onContact }: { step: Step; onContact?: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -29,7 +29,7 @@ function StepCard({ step }: { step: Step }) {
         </p>
         {step.cta && (
           <div className="mt-3">
-            <Button size="sm" className="bg-primary text-background hover:opacity-90">
+            <Button size="sm" className="bg-primary text-background hover:opacity-90" onClick={onContact}>
               {step.cta}
             </Button>
           </div>
@@ -39,7 +39,7 @@ function StepCard({ step }: { step: Step }) {
   );
 }
 
-export default function ProcessSteps() {
+export default function ProcessSteps({ onContact }: { onContact: () => void }) {
   const steps: Step[] = [
     {
       number: "1",
@@ -66,11 +66,11 @@ export default function ProcessSteps() {
     <section className="w-full text-foreground py-10 md:py-16">
       <div className="mx-auto max-w-3xl px-6 space-y-6">
         {steps.map((s) => (
-          <StepCard key={s.number} step={s} />
+          <StepCard key={s.number} step={s} onContact={onContact} />
         ))}
 
         <div className="pt-4 flex justify-center">
-          <Button size="lg" className="bg-primary text-background hover:opacity-90">
+          <Button size="lg" className="bg-primary text-background hover:opacity-90" onClick={onContact}>
             Contáctanos
             <ArrowRight />
           </Button>
